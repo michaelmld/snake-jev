@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Snake × Jev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="game">
+      <header class="brand">
+        <h1>Snake <span class="x">×</span> <span class="jev">Jev</span></h1>
+        <span id="modelTag" class="tag">model: …</span>
+      </header>
+
+      <div class="stats">
+        <div><label>Score</label><b id="score">0</b></div>
+        <div><label>Best</label><b id="best">0</b></div>
+        <div><label>Jev calls</label><b id="calls">0</b></div>
+        <div><label>Avg latency</label><b id="latency">–</b></div>
+        <div><label>Tokens in / out</label><b id="tokens">0 / 0</b></div>
+      </div>
+
+      <div class="board-wrap">
+        <canvas id="board" width="480" height="480"></canvas>
+        <div id="overlay" class="overlay hidden"></div>
+      </div>
+
+      <div class="controls">
+        <div class="seg" role="group" aria-label="Driver">
+          <button id="driverJev" class="on">Jev drives</button>
+          <button id="driverHuman">I drive</button>
+        </div>
+        <button id="startBtn" class="primary">Start</button>
+        <button id="stepBtn" title="One Jev decision">Step</button>
+        <button id="resetBtn">Reset</button>
+      </div>
+      <div class="controls small">
+        <label>Pause after each move <input id="delay" type="range" min="0" max="1000" step="50" value="150" /> <span id="delayVal">150ms</span></label>
+        <label><input id="autoRestart" type="checkbox" checked /> Auto-restart</label>
+      </div>
+      <p class="hint">Space = start/pause · Arrow keys steer in “I drive” mode</p>
+    </section>
+
+    <aside class="log">
+      <header>
+        <h2>Jev calls</h2>
+        <div class="log-actions">
+          <button id="downloadBtn">Download JSON</button>
+          <button id="clearBtn">Clear</button>
+        </div>
+      </header>
+      <p class="log-sub">Each turn, code tells Jev only what the snake sees and where the food is, with no hints about which move is safe or good. Jev picks a direction with a <code>choice</code> question. Click a call to see the exact request and response.</p>
+      <ol id="logList"></ol>
+    </aside>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>

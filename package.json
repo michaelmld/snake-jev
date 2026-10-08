@@ -1,0 +1,8 @@
+{
+  "name": "snake-jev",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Snake played by TypeSafe Jev, with a live call inspector",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}
